@@ -3,6 +3,7 @@ const express = require("express");
 let ejs = require("ejs");
 const { json } = require("body-parser");
 const app = express();
+PORT = process.env.PORT  || 3000
 var Todos = [];
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
