@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Day</title>
+  </head>
+
+  <body>
+      <div class="box" id='heading'>
+        <h1 style="text-align: center">
+            Today is <strong> <%= currentDay %> </strong>
+          </h1>
+      </div>
+    
+    <div class="box">
+        <% for(var i = 0; i < addNewTodos.length; i++){ %> 
+                <div class="item">
+                    <input type="checkbox">
+                    <p><%= addNewTodos[i] %></p> 
+                </div>
+            <%}%>
+            <form action="/" target="_self" method="POST" class="box">
+                <label for="addTodo"></label>
+                <input type="text" name="addTodo" id="addTodo" autofocus placeholder="Add something here"/>
+                <button type="submit">+</button>
+              </form>
+    </div>
+      
+    
+  </body>
+</html>
