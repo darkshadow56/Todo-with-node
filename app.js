@@ -27,6 +27,6 @@ app.post('/', (req, res)=>{
     res.redirect('/');
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server Started at port", PORT);
 });
