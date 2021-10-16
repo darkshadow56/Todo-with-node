@@ -4,31 +4,54 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon">
     <title>Day</title>
   </head>
 
   <body>
-      <div class="box" id='heading'>
-        <h1 style="text-align: center">
-            Today is <strong> <%= currentDay %> </strong>
-          </h1>
-      </div>
-    
-    <div class="box">
-        <% for(var i = 0; i < addNewTodos.length; i++){ %> 
-                <div class="item">
-                    <input type="checkbox">
-                    <p><%= addNewTodos[i] %></p> 
-                </div>
-            <%}%>
-            <form action="/" target="_self" method="POST" class="box">
-                <label for="addTodo"></label>
-                <input type="text" name="addTodo" id="addTodo" autofocus placeholder="Add something here"/>
-                <button type="submit">+</button>
-              </form>
+    <div class="box" id="heading">
+      <h1 style="text-align: center">
+        Today is <strong> <%= currentDay %> </strong>
+      </h1>
     </div>
-      
-    
+
+    <div class="box">
+      <% addNewTodos.forEach(newTodo => { %>
+        <form action="/delete" method="post">
+      <div class="item">
+         <input id="checkBox" type="checkbox" name="checkBox" value="<%= newTodo.id %>" onChange="this.form.submit()"/>
+        <p><%= newTodo.name %></p>
+      </div>
+     <% })%>
+    </form>
+      <form action="/" target="_self" method="POST" class="box">
+        <label for="addTodo"></label>
+        <input
+          type="text"
+          name="addTodo"
+          id="addTodo"
+          autofocus
+          placeholder="Add something here"
+        />
+        <button id="submit-btn" type="submit">+</button>
+      </form>
+    </div>
+
+    <script>
+      const input = document.getElementById("addTodo");
+      const form = document.querySelector("form");
+      const checkBox = document.getElementById("checkBox");
+      const deleteButton = document.getElementById("deleteButton");
+
+
+      //Adding preventDefault to prevent submitting empty string      
+      form.addEventListener("submit", (e) => {
+        if (input.value === "" || input == null) {
+          e.preventDefault();
+        }
+      });
+      //
+    </script>
   </body>
 </html>
